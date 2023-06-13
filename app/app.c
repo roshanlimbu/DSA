@@ -106,7 +106,7 @@ void searchStudent() {
 
     printf("Matching students:\n");
     for (int i = 0; i < numStudents; i++) {
-        if (studentRegister[i].id, searchName  == 0 &&
+        if (studentRegister[i].id, searchName) == 0 &&
             studentRegister[i].roll == searchRoll &&
             studentRegister[i].class == searchClass) {
             printf("ID: %d, Name: %s, Roll: %d, Class: %d\n",
