@@ -83,12 +83,12 @@ int main() {
     printf("3. Display\n");
     printf("4. Quit\n");
     printf("Enter your choice: ");
-    scanf("%d", &choice);
+    scanf_s("%d", &choice);
 
     switch (choice) {
     case 1:
       printf("Enter the element to enqueue: ");
-      scanf("%d", &item);
+      scanf_s("%d", &item);
       enqueue(&pq, item);
       break;
 

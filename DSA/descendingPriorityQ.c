@@ -1,10 +1,10 @@
-#include <stdbool.h>
 #include <stdio.h>
+#include <stdbool.h>
 
-#define MAX_CAPACITY 5
+#define MAX 5
 
 typedef struct {
-  int items[MAX_CAPACITY];
+  int items[MAX];
   int rear;
   int size;
 } PriorityQueue;
@@ -14,7 +14,7 @@ void initQueue(PriorityQueue *queue) {
   queue->size = 0;
 }
 
-bool isFull(PriorityQueue *queue) { return queue->size == MAX_CAPACITY; }
+bool isFull(PriorityQueue *queue) { return queue->size == MAX; }
 
 bool isEmpty(PriorityQueue *queue) { return queue->size == 0; }
 
@@ -26,6 +26,7 @@ void enqueue(PriorityQueue *queue, int item) {
 
   int i;
   for (i = queue->size - 1; i >= 0; i--) {
+    // changed sign in ascending to greter than
     if (item > queue->items[i])
       queue->items[i + 1] = queue->items[i];
     else
