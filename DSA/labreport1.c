@@ -58,12 +58,12 @@ int main() {
     printf("3. List\n");
     printf("4. Exit\n");
     printf("Enter your choice: ");
-    scanf("%d", &choice);
+    scanf_s("%d", &choice);
 
     switch (choice) {
     case 1:
       printf("Enter the value to push: ");
-      scanf("%d", &value);
+      scanf_s("%d", &value);
       push(&stack, value);
       break;
     case 2:
