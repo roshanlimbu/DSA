@@ -4,29 +4,92 @@ struct node {
   int data;          // holds the actual data in a node
   struct node *next; // holds the address of the next node in the list
 };
-struct node *getnode() {
-  int n;
+struct node *header = NULL;
+struct node *getnode(int n) {
   struct node *newnode = (struct node *)malloc(sizeof(struct node));
+  if (newnode == NULL) {
+    printf("Memory allocation failed");
+    // getche();
+    exit(0);
+  }
   newnode->data = n;
   newnode->next = NULL;
   return newnode;
 }
+void insertAtFront() {
+  int n;
+  struct node *ptrnew;
+  printf("\nEnter a number");
+  scanf_s("%d", &n);
+  ptrnew = getnode(n);
+  ptrnew->next = header;
+  header = ptrnew;
+  printf("\nNode inserted at the front.");
+}
 void insertAtLast() {
   int n;
-  struct node *ptr, *ptrthis;
+  struct node *ptrnew, *ptrthis;
   printf("\nEnter a number:");
   scanf("%d", &n);
-  ptr = getnode(n);
+  ptrnew = getnode(n);
   if (header == NULL)
     header = ptrnew;
   else {
-    for (ptrthis = header; ptrthis->next != NULL; ptrthis = ptrthis->next)
-      ;
+    for (ptrthis = header; ptrthis->next != NULL; ptrthis = ptrthis->next) {
+      // do nothing
+    }; // checks whether there is another list items or not
     ptrthis->next = ptrnew;
   }
-  printf("\nNode inserted at the end");
+  printf("\nNode inserted at the end.");
+}
+void insertAfter() {
+  int n, target;
+  struct node *ptrnew, *ptrthis;
+  printf("\nEnter the number after which you want to insert.");
+  scanf_s("%d", &target);
+  for (ptrthis = header; ptrthis->next != NULL; ptrthis = ptrthis->next) {
+    if (ptrthis->data == target) {
+      printf("\nEnter your number");
+      scanf_s("%d", &n);
+      ptrnew = getnode(n);
+      ptrnew->next = ptrthis->next;
+      ptrthis->next = ptrnew;
+      printf("\nNode inserted after %d", target);
+      return;
+    }
+  };
+  printf("\nTarget node not found.");
+}
+
+void insetBefore() {
+  int n, target;
+  struct node *ptrnew, *ptrthis, *ptrback;
+  printf("\nEnter the number before which you want to insert.");
+  scanf_s("%d", &target);
+  for (ptrthis = ptrback = header; ptrthis != NULL; ptrthis = ptrthis->next) {
+    if (ptrthis->data == target) {
+      printf("\nEnter your number");
+      scanf_s("%d", &n);
+      ptrnew = getnode(n);
+      if (ptrthis == header) {
+        ptrnew->next = header;
+        header = ptrnew;
+      } else {
+        ptrnew->next = ptrthis;
+        ptrback->next = ptrnew;
+      }
+      ptrnew->next = ptrthis->next;
+      ptrthis->next = ptrnew;
+    }
+    printf("\nNode inserted before %d", target);
+    return;
+    ptrback = ptrthis;
+    ptrthis=ptrthis->next;
+  };
+  printf("\nTarget node not found.");
 }
 void display() {
+  struct node *ptrthis;
   if (header == NULL)
     printf("\nList is empty");
   else {
@@ -37,22 +100,36 @@ void display() {
 }
 int main() {
   char ch;
-  struct node *header = NULL; // empty list initialized
+  // struct node *header = NULL; // empty list initialized
   while (1) {
-    system("clear");
-    printf("Select and option:\n1. Insert\n2. Remove\n3. List\n4. Exit");
+    system("CLS");
+    printf("Select and option:\n1. Insert at front\n2.Insert at last "
+           "\n3.Insert After \n4.Insert Before \n5.Remove from front "
+           "\n6.Remove from last\n7. Remove any \n8. List \n9. Exit");
     ch = getchar();
     switch (ch) {
     case '1':
-      insertAtLast();
+      insertAtFront();
       break;
     case '2':
+      insertAtLast();
       break;
     case '3':
-      display();
+      insertAfter();
       break;
     case '4':
       break;
+    case '5':
+      break;
+    case '6':
+      break;
+    case '7':
+      break;
+    case '8':
+      display();
+      break;
+    case '9':
+      exit(0);
     }
   }
   return 0;
