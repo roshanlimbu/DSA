@@ -1,3 +1,4 @@
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 struct node {
@@ -84,9 +85,46 @@ void insetBefore() {
     printf("\nNode inserted before %d", target);
     return;
     ptrback = ptrthis;
-    ptrthis=ptrthis->next;
+    ptrthis = ptrthis->next;
   };
   printf("\nTarget node not found.");
+}
+void remvoeFromFront() {
+  struct node *ptrthis;
+  if (header == NULL) {
+    printf("\nList is empty.");
+  } else {
+    ptrthis = header;
+    header = header->next;
+    free(ptrthis);
+    printf("Node removed form the front.");
+  }
+}
+void remvoeFromLast() {
+  struct node *ptrthis, *ptrback;
+  if (header == NULL) {
+    printf("List is empty.");
+  } else {
+    for (ptrthis = ptrback = header; ptrthis->next != NULL;
+         ptrthis = ptrthis->next) {
+      ptrback = ptrthis;
+    }
+    if (ptrthis == header) {
+      header = NULL;
+    } else {
+      ptrback->next = NULL;
+    }
+    free(ptrthis);
+    printf("\n Node removed form last");
+  }
+}
+void removeAny(){
+  struct node *ptrthis;
+  if(header==NULL) {
+    printf("\n List is empty.");
+    return;
+  }
+
 }
 void display() {
   struct node *ptrthis;
@@ -118,6 +156,7 @@ int main() {
       insertAfter();
       break;
     case '4':
+      insetBefore();
       break;
     case '5':
       break;
