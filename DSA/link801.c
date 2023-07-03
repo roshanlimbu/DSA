@@ -119,12 +119,25 @@ void remvoeFromLast() {
   }
 }
 void removeAny(){
-  struct node *ptrthis;
-  if(header==NULL) {
-    printf("\n List is empty.");
-    return;
+  int n;
+  struct node *ptrthis, *ptrback;
+  printf("\nEnter a number to be removed.");
+  scanf_s("%d", &n);
+  for(ptrthis=ptrback=header; ptrthis!=NULL; ptrthis=ptrthis->next){
+    if (ptrthis->data==n) {
+      // 3 cases we have to deal with
+      if(ptrthis==header){
+        header=header->next;
+        free(ptrthis);
+      } else {
+      ptrback->next=ptrthis->next;
+      }
+      free(ptrthis);
+      return;
+    }
+    ptrback=ptrthis;
   }
-
+  printf("\nThe number you specified does not exist in the list.");
 }
 void display() {
   struct node *ptrthis;
