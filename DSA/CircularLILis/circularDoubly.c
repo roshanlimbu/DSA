@@ -83,6 +83,35 @@ void insertAfter(){
   } while(ptrthis!=header);
   printf("%d not found in the list.", key);
 }
+void insertBefore(){
+  int n,key;
+  struct node *ptrthis, *ptrnew;
+  if(header==NULL){
+    printf("\nList is empyt.");
+    return;
+  }
+  printf("\nEnter a number before which you want to add new node");
+  scanf("%d", &key);
+  ptrthis=header;
+  do{
+   if(ptrthis->info==key) {
+      printf("\nEnter new node to be inserted");
+      scanf("%d", &n);
+      ptrnew=getnode(n);
+      ptrnew->prev=ptrthis->prev;
+      ptrnew->next=ptrthis;
+      (ptrthis->prev)->next=ptrnew;
+      ptrthis->prev=ptrnew;
+      if(ptrthis==header){
+        header = ptrnew;
+      }
+      printf("\nNode inserted before %d", key);
+      return;
+    }
+    ptrthis=ptrthis->next; // go ahead
+  } while(ptrthis!=header);
+  printf("%d not found in the list.", key);
+}
 void forwardDisplay(){
   struct node *ptrthis;
   if(header==NULL){
@@ -123,15 +152,14 @@ int main(){
     switch(ch){
       case '1': insertAtFront(); break;
       case '2': insertAtLast(); break;
-      case '3': break;
-      case '4': break;
+      case '3': insertAfter(); break;
+      case '4': insertBefore(); break;
       case '5': break;
       case '6': break;
       case '7': break;
       case '8': forwardDisplay();break;
       case '9': backwardDisplay();break;
       case 'x':
-      case 'X': return;
     }
     getch();
   } while(1);
