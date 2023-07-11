@@ -1,0 +1,16 @@
+meterId
+customerId
+user previous reading
+user new reading
+
+cuatoemrId
+customerName
+customer Address
+
+
+
+* calculate the total units based on new reading
+* calculate the cost of the units according to the rules of NEA
+-- need to do the above using dynamic data structure
+-- need to use self-referencial sturcture 
+-- need to use string.h to store name
