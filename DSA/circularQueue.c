@@ -13,7 +13,7 @@ int getNextPosition(int n) {
   if (n == MAX - 1) {
     return 0;
   } else {
-    return n++;
+    return n+1;
   }
 }
 int isFull(struct queue q) {
@@ -33,7 +33,7 @@ int isEmpty(struct queue q) {
 void enqueue(struct queue *q, int n) {
   q->rear = getNextPosition(q->rear);
   q->item[q->rear] = n;
-  printf("\nItem inserted.");
+  printf("Item inserted.\n");
 }
 int dequeue(struct queue *q) {
   int n;
@@ -61,15 +61,15 @@ int main() {
   q.front = q.rear = MAX - 1;
   while (TRUE) {
     printf(
-        "Select your choice : \n1. Enqueue \n2. Dequeue \n3. List \n4. Exit ");
-    choice = getch();
+        "\n\nSelect your choice : \n1. Enqueue \n2. Dequeue \n3. List \n4. Exit ");
+    choice = _getch();
     switch (choice) {
     case '1':
       if (isFull(q)) {
         printf("Can't add new items. \n");
       } else {
         printf("\nEnter a  number\n");
-        scanf("%d", &n);
+        scanf_s("%d", &n);
         enqueue(&q, n);
       }
       break;
