@@ -23,7 +23,7 @@ int main(){
   s.tos=-1;
   system("cls");
   printf("Enter your postfix expression: ");
-  scanf("%s", str);
+  scanf_s("%s", str);
   /* fgets(str, MAX, stdin); */
   for (i=1; i<strlen(str)-1; i++){
     switch (str[i]) {
@@ -59,13 +59,13 @@ int main(){
 
       default:
       printf("Enter the value of %c", str[i]);
-      scanf("%f", &val);
+      scanf_s("%f", &val);
       push(&s, val);
       break;
     }
   }
   printf("\n Value of expression is: %f", pop(&s));
-  getche();
+  _getche();
 }
 
 
