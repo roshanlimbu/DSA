@@ -1,6 +1,6 @@
-public class Java{
+public class Add{
   public static void main(String[]args){
-    system.out.println("Hello World");
+    System.out.println("hello");
   }
 }
 
