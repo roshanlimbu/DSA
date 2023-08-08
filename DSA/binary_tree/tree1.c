@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <conio.h>
 #include <stdlib.h>
 
 
@@ -17,6 +16,7 @@ TreeNode* createNode(int data){
   newNode->left = NULL;
   return newNode;
 }
+
 
 // func to inset node in bt
 TreeNode *insert(TreeNode *root , int data){
@@ -58,9 +58,9 @@ int main() {
     printf("Select options:\n");
     printf("1. Insert\n");
     printf("Enter the choice: ");
-    scanf_s("%d", &choice);
+    scanf("%d", &choice);
     printf("Enter the data to be inserted: \n");
-    scanf_s("%d", &data);
+    scanf("%d", &data);
 
     root = insert(root, data);
 
