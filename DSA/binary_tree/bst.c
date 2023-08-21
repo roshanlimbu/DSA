@@ -68,7 +68,7 @@ void removeNode(){
     while(ptrthis!=NULL){
         if(ptrthis->info==data){
             // this is the node to be removed
-            if(ptrthis->left==NULL && ptrthis->right == NULL) {
+            if(ptrthis->left==NULL && ptrthis->right == NULL ) {
                 if(ptrthis==root){
                     root=NULL;
                 } else if(ptrparent->left==ptrthis){
@@ -93,6 +93,9 @@ void removeNode(){
                 }
 
             } else { // if node has both left and right son
+                while (ptrthis) {
+        
+                }
 
             }
 
