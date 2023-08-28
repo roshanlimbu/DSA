@@ -1,0 +1,13 @@
+recursion
+Inorder
+postorder 
+preorder 
+huffman algo
+B-tree
+
+sorting
+bubblesort
+selectionsort
+quick sort
+
+
