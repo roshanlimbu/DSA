@@ -1,9 +1,8 @@
 // prefix expression
 #include <stdio.h>
-#include <conio.h>
 #include <string.h>
-#include <process.h>
 #include <math.h>
+
 #define MAX 100 
 typedef struct {
   float items [MAX];
@@ -64,7 +63,6 @@ int main(){
     }
   }
 printf("\n Value of the expression: %f",pop(&s));
-getche();
 }
 
 

@@ -63,7 +63,7 @@ int main() {
       } else {
         ch = peek(&s);
         if ((ch == '[' && exp[i] != ']') || (ch == '{' && exp[i] != '}') ||
-            (ch == '(' && exp[i] != ')')) {
+          (ch == '(' && exp[i] != ')')) {
           valid = FALSE;
           break;
         }
